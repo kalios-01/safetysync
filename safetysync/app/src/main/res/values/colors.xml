@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rv_item_bg">#B8B8E4</color>
+    <color name="text_color">#000</color>
+    <color name="fab_background">#C7B7E2</color>
+    <color name="application_background">#FFF</color>
+    <color name="statusBar_color">#fff</color>
+
+
+</resources>

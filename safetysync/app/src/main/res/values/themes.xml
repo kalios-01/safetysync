@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SeaftySync" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:statusBarColor">@color/statusBar_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+    <style name="Theme.SeaftySync" parent="Base.Theme.SeaftySync" />
+</resources>

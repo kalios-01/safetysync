@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/application_background"
+    tools:context=".Settings">
+
+    <TextView
+        android:id="@+id/settings_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textColor="@color/text_color"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/permission_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Permission"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_heading" />
+
+    <LinearLayout
+        android:id="@+id/location_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permission_heading">
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_location_off" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Location"
+            android:textColor="@color/text_color"
+            android:textSize="24sp" />
+
+        <Switch
+            android:id="@+id/switch_location"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/microphone_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_container">
+
+        <ImageView
+            android:id="@+id/microphone_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.25"
+            android:src="@drawable/ic_microphone_off" />
+
+        <TextView
+            android:id="@+id/microphone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Microphone"
+            android:textColor="@color/text_color"
+            android:textSize="24sp" />
+
+        <Switch
+            android:id="@+id/switch_microphone"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/photo_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/microphone_container">
+
+        <ImageView
+            android:id="@+id/photo_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_photo_off" />
+
+        <TextView
+            android:id="@+id/photo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Photo"
+            android:textColor="@color/text_color"
+            android:textSize="24sp" />
+
+        <Switch
+            android:id="@+id/switch_photo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_container">
+
+        <ImageView
+            android:id="@+id/video_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_video_off" />
+
+        <TextView
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Video"
+            android:textColor="@color/text_color"
+            android:textSize="24sp" />
+
+        <Switch
+            android:id="@+id/switch_video"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/display_over_other_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_container">
+
+        <ImageView
+            android:id="@+id/display_over_other_app_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:src="@drawable/ic_over_others" />
+
+        <TextView
+            android:id="@+id/display_over_other"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Display Over Other"
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+
+        <Switch
+            android:id="@+id/switch_display_over_other"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="0"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/theme_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Theme"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/display_over_other_container" />
+    <LinearLayout
+        android:id="@+id/theme_change_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/application_background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theme_heading">
+
+        <ImageView
+            android:id="@+id/theme_change_icon"
+            android:layout_width="20dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:src="@drawable/ic_dark_mode"/>
+
+        <TextView
+            android:id="@+id/theme_change"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:text="Change Theme"
+            android:textColor="@color/text_color"
+            android:textSize="25sp" />
+
+        <Switch
+            android:id="@+id/theme_switch"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="0"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

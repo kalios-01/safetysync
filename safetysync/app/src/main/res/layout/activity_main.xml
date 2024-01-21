@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/application_background"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_imageView"
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_profile"
+            app:srcCompat="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/text_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Wellcome back,\nKalios"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/option_menu"
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="8dp"
+            android:background="@color/application_background"
+            android:src="@drawable/ic_option_menu"
+            />
+    </LinearLayout>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="395dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/locationview"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="location"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
+
+
+    <Button
+        android:id="@+id/btn_panic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/fab_background"
+        android:text="Panic Alert"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationview" />
+
+    <LinearLayout
+        android:id="@+id/contact_heading"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_panic">
+
+        <TextView
+            android:id="@+id/contactlistheading"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/text_color"
+            android:layout_weight="6"
+            android:gravity="center|start"
+            android:text="Emergency Contact"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/add_contact"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/application_background"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_addcontact" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contact_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_heading" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/fab_background"
+        android:text="Settings"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_panic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_panic"
+        app:layout_constraintTop_toBottomOf="@+id/locationview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
