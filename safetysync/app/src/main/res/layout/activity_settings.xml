@@ -11,6 +11,8 @@
         android:id="@+id/settings_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/elnath"
         android:text="Settings"
         android:textColor="@color/text_color"
         android:textSize="25sp"
@@ -24,11 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/elnath"
         android:text="Permission"
         android:textColor="@color/text_color"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/location_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_heading" />
@@ -38,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@color/application_background"
         android:orientation="horizontal"
@@ -49,7 +55,7 @@
         <ImageView
             android:id="@+id/location_icon"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_location_off" />
@@ -57,19 +63,21 @@
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Location"
             android:textColor="@color/text_color"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/switch_location"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:gravity="top"
+            android:gravity="center|top"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
 
@@ -78,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:background="@color/application_background"
         android:orientation="horizontal"
@@ -89,7 +97,7 @@
         <ImageView
             android:id="@+id/microphone_icon"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1.25"
             android:src="@drawable/ic_microphone_off" />
@@ -97,17 +105,19 @@
         <TextView
             android:id="@+id/microphone"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Microphone"
             android:textColor="@color/text_color"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/switch_microphone"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
@@ -128,7 +138,7 @@
         <ImageView
             android:id="@+id/photo_icon"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_photo_off" />
@@ -136,17 +146,19 @@
         <TextView
             android:id="@+id/photo"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Photo"
             android:textColor="@color/text_color"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/switch_photo"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
@@ -167,7 +179,7 @@
         <ImageView
             android:id="@+id/video_icon"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_video_off" />
@@ -175,17 +187,19 @@
         <TextView
             android:id="@+id/video"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Video"
             android:textColor="@color/text_color"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/switch_video"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
@@ -206,7 +220,7 @@
         <ImageView
             android:id="@+id/display_over_other_app_icon"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="2"
             android:src="@drawable/ic_over_others" />
@@ -214,18 +228,19 @@
         <TextView
             android:id="@+id/display_over_other"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Display Over Other"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/switch_display_over_other"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="0"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
@@ -239,12 +254,13 @@
         android:layout_marginEnd="8dp"
         android:text="Theme"
         android:textColor="@color/text_color"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/display_over_other_container" />
+
     <LinearLayout
         android:id="@+id/theme_change_container"
         android:layout_width="match_parent"
@@ -261,26 +277,27 @@
         <ImageView
             android:id="@+id/theme_change_icon"
             android:layout_width="20dp"
-            android:layout_height="51dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="2"
-            android:src="@drawable/ic_dark_mode"/>
+            app:srcCompat="@drawable/ic_light_mode" />
 
         <TextView
             android:id="@+id/theme_change"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/elnath"
             android:gravity="center|start"
             android:text="Change Theme"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/theme_switch"
             android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_height="20dp"
             android:layout_weight="0"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
     </LinearLayout>

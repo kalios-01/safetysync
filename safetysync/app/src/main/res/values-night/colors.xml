@@ -3,6 +3,6 @@
     <color name="rv_item_bg">#4C4C4E</color>
     <color name="text_color">#fff</color>
     <color name="fab_background">#43454A</color>
-    <color name="application_background">#2B2D30</color>
-    <color name="statusBar_color">#2B2D30</color>
+    <color name="application_background">#191919</color>
+    <color name="statusBar_color">#191919</color>
 </resources>

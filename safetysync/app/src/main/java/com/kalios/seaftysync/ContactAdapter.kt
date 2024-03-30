@@ -3,29 +3,29 @@ package com.kalios.seaftysync
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactAdapter(private val mList: List<Contact>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+class ContactAdapter(
+    private val mList: MutableList<Contact>,
+    private val itemClickListener: MainActivity
+) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
 
+    // Interface for item click events
+    interface OnItemClickListener {
+        fun onItemClick(contact: Contact)
+    }
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // inflates the card_view_design view
-        // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_contact, parent, false)
-
         return ViewHolder(view)
     }
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val ItemsViewModel = mList[position]
-        holder.item_Name.text = ItemsViewModel.Name
-        holder.item_Number.text = ItemsViewModel.Number
-
+        val contact = mList[position]
+        holder.bind(contact)
     }
 
     // return the number of the items in the list
@@ -34,8 +34,35 @@ class ContactAdapter(private val mList: List<Contact>) : RecyclerView.Adapter<Co
     }
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val item_Name: TextView = itemView.findViewById(R.id.item_name)
-        val item_Number: TextView = itemView.findViewById(R.id.item_number)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        private val itemNumber: TextView = itemView.findViewById(R.id.item_number)
+        private lateinit var currentContact: Contact
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        fun bind(contact: Contact) {
+            currentContact = contact
+            itemNumber.text = contact.Number
+        }
+
+        override fun onClick(view: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val clickedContact = mList[position]
+                itemClickListener.onItemClick(clickedContact)
+            }
+        }
+    }
+
+    // Remove item from the list
+    fun removeItem(position: Int): Contact? {
+        if (position != RecyclerView.NO_POSITION && position < mList.size) {
+            val removedContact = mList.removeAt(position)
+            notifyItemRemoved(position)
+            return removedContact
+        }
+        return null
     }
 }

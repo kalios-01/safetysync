@@ -47,6 +47,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     // Map Integration
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
-
+    implementation ("com.google.android.gms:play-services-location:21.2.0")
+    // Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // for ads
+    implementation ("com.google.android.gms:play-services-ads:23.0.0")
 }

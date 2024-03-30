@@ -1,8 +1,12 @@
 package com.kalios.seaftysync
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.RecognitionListener
+import android.speech.SpeechRecognizer
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
@@ -23,6 +27,40 @@ class Settings : AppCompatActivity() {
     private lateinit var video_icon : ImageView
     private lateinit var displayoverother_icon : ImageView
     private lateinit var theme_change_icon : ImageView
+    private lateinit var voiceHelper: VoiceHelper
+    private lateinit var smsHelper: SMSHelper
+
+
+    // voice integration
+    private val recognitionListener = object : RecognitionListener {
+        override fun onReadyForSpeech(params: Bundle?) {}
+        override fun onBeginningOfSpeech() {}
+        override fun onRmsChanged(rmsdB: Float) {}
+        override fun onBufferReceived(buffer: ByteArray?) {}
+        override fun onEndOfSpeech() {}
+        override fun onError(error: Int) {
+            Log.e(TAG, "Error listening: $error")
+            // Release wake lock on error
+            voiceHelper.stopListening()
+        }
+
+        override fun onResults(results: Bundle?) {
+            val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+            matches?.let {
+                for (result in it) {
+                    if (result.equals("help", ignoreCase = true)) {
+
+                    }
+                }
+            }
+            // Release wake lock after processing results
+            voiceHelper.stopListening()
+        }
+
+        override fun onPartialResults(partialResults: Bundle?) {}
+        override fun onEvent(eventType: Int, params: Bundle?) {}
+    }
+    // onCreate Starts here
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +73,12 @@ class Settings : AppCompatActivity() {
         switch_displayoverother = findViewById(R.id.switch_display_over_other)
         switch_changeTheme = findViewById(R.id.theme_switch)
 
+
+        // Data from Main activity
+        val phoneNumbers: List<String> = intent.getStringArrayListExtra("phoneNumbers")?.toList() ?: emptyList()
+        val message = intent.getStringExtra("message")
+
+
         // Icon Setup
         location_icon = findViewById(R.id.location_icon)
         microphone_icon = findViewById(R.id.microphone_icon)
@@ -43,6 +87,8 @@ class Settings : AppCompatActivity() {
         displayoverother_icon = findViewById(R.id.display_over_other_app_icon)
         theme_change_icon =findViewById(R.id.theme_change_icon)
         val currentNightMode = AppCompatDelegate.getDefaultNightMode()
+        voiceHelper = VoiceHelper(this)
+
 
         switch_location.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -56,9 +102,14 @@ class Settings : AppCompatActivity() {
         switch_microphone.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 microphone_icon.setImageResource(R.drawable.ic_microphone_on)
+                voiceHelper.startListening(recognitionListener)
+                if (message != null) {
+                    smsHelper.sendSMS(phoneNumbers,message)
+                }
                 Toast.makeText(this,"Microphone Permission Granted",Toast.LENGTH_LONG).show()
             } else{
                 microphone_icon.setImageResource(R.drawable.ic_microphone_off)
+                voiceHelper.stopListening()
                 Toast.makeText(this,"Microphone Permission Denied",Toast.LENGTH_LONG).show()
             }
         }
@@ -90,21 +141,26 @@ class Settings : AppCompatActivity() {
                 Toast.makeText(this,"Display Over Other Apps Permission Denied",Toast.LENGTH_LONG).show()
             }
         }
+
         switch_changeTheme.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
+                theme_change_icon.setImageResource(R.drawable.ic_dark_mode)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                theme_change_icon.setImageResource(R.drawable.ic_light_mode)
             }
         }
-        if (currentNightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            // Dark theme is active
-            theme_change_icon.setImageResource(R.drawable.ic_dark_mode)
-        } else {
-            // Light theme is active
-            theme_change_icon.setImageResource(R.drawable.ic_light_mode)
+        switch_changeTheme.isChecked = isDarkModeActive()
+    }
+    companion object {
+        private const val TAG = "Voice_Test"
+    }
+    private fun isDarkModeActive(): Boolean {
+        return when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> true
+            else -> false
         }
-
     }
 }
