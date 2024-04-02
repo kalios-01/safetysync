@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity(),ContactAdapter.OnItemClickListener, OnM
     private var data = mutableListOf<Contact>()
     private val adapter = ContactAdapter(data,this)
     private lateinit var rv_Contact_Number :String
+    private lateinit var Username : String
     // SMS
     private lateinit var message :String
     private var PhoneNumbers_List = mutableListOf<String>()
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity(),ContactAdapter.OnItemClickListener, OnM
         val bitmap_defaultDrawable = getBitmapFromDrawableUri(this, defaultDrawableIconUri)
         val dataHelper = DataHelper(this)
         CoroutineScope(Dispatchers.Main).launch {
+            Username = dataHelper.retrieveUsername().toString();
             val updatedImage = dataHelper.retrieveBitmap()
             val finalImage = updatedImage ?: bitmap_defaultDrawable
             profile_imageView = findViewById(R.id.profile_imageView)
@@ -226,7 +228,7 @@ class MainActivity : AppCompatActivity(),ContactAdapter.OnItemClickListener, OnM
                     val currentLatLng = LatLng(location.latitude, location.longitude)
                     locationText = "Latitude: ${currentLatLng.latitude} | Longitude: ${currentLatLng.longitude}"
                     locationlink = "https://www.google.com/maps?q=${currentLatLng.latitude},${currentLatLng.longitude}"
-                    message = "Help Me \n Kalios \n Location: \n $locationlink"
+                    message = "Help Me \n $Username \n Location: \n $locationlink"
                     location_view.text =locationText
 
                     // Move the camera to the user's location and add a marker
